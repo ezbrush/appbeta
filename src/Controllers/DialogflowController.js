@@ -53,3 +53,27 @@ module.exports.transcriReceta=async(req,res,next)=>{
 
 
 };
+
+module.exports.DetectIntent=async(req,res,next)=>{
+    try {
+        sender = req.body.From; // CELULAR
+        text = req.body.mensaje;
+        titular=sender; //sender.substr(9);
+        setSessionAndUser(sender);
+        const response = await Dialogbot.sendTextQuery(
+            sessionIds,
+            sender,
+            text
+        );
+        const resp = response[0].queryResult.fulfillmentText;
+            res.json({
+                mensaje:resp,
+                ok:true,
+                
+            });
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+
+};
