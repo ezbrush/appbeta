@@ -17,13 +17,11 @@ db.sync().then(() => console.log('DB Conectada')).catch((error) => console.log(e
 app.set("port", process.env.PORT );
 
     // view engine setup
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+
 // Ubicaciones - Vistas
-// app.set("views", path.join(__dirname, "./src/views"));
-// app.engine(".hbs",exphbs({ defaultLayout: "main",extname: ".hbs"}) );
-// app.set("view engine", ".hbs");
+app.set("views", path.join(__dirname, "./src/views"));
+app.engine(".hbs",exphbs({ defaultLayout: "main",extname: ".hbs"}) );
+app.set("view engine", ".hbs");
 app.use(cookieParser());
 
 
