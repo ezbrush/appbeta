@@ -76,4 +76,25 @@ module.exports.DetectIntent=async(req,res,next)=>{
         next();
     }
 
+}; 
+exports.index=(req,res,next) => {
+    try {    
+        // const mensaje = {
+        //     type: 'error',
+        //     message: 'This is a flash message using custom middleware 00000and express-session.'
+        // };
+        res.render('index');
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+exports.home=(req,res,next)=>{
+    try {
+        res.render('home');
+    } catch (error) {
+        console.log(error);
+        next();
+    }
 };
