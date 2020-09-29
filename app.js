@@ -19,7 +19,7 @@ app.set("port", process.env.PORT );
     // view engine setup
 
 // Ubicaciones - Vistas
-app.set("views", path.join(__dirname, "./src/views"));
+app.set("views", path.join(__dirname, "./src/Views"));
 app.engine(".hbs",exphbs({ defaultLayout: "main",extname: ".hbs"}) );
 app.set("view engine", ".hbs");
 //app.use(cookieParser());

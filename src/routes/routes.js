@@ -2,7 +2,7 @@
 const { Router } = require("express");
 const router = Router();
 //const productoController = require("../controllers/productoController.js");
-const dialogflowController = require("../controllers/DialogflowController.js");
+const dialogflowController = require("../Controllers/DialogflowController.js");
 const bodyParser = require("body-parser");
 // support encoded bodies
 router.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
