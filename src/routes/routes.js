@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 router.use(bodyParser.json({ limit: "50mb", extended: true }));
 
 router.get("/",dialogflowController.index );
-router.get("/home",);
+router.get("/home",dialogflowController.home);
 router.post("/api/transcripcion",dialogflowController.transcriReceta);
 router.post("/api/intent",dialogflowController.DetectIntent);
 

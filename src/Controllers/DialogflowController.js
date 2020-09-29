@@ -77,7 +77,7 @@ module.exports.DetectIntent=async(req,res,next)=>{
     }
 
 }; 
-exports.index=(req,res,next) => {
+exports.index=async (req,res,next) => {
     try {    
         // const mensaje = {
         //     type: 'error',
@@ -90,7 +90,7 @@ exports.index=(req,res,next) => {
     }
 };
 
-exports.home=(req,res,next)=>{
+exports.home= async (req,res,next)=>{
     try {
         res.render('home');
     } catch (error) {
