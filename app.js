@@ -22,7 +22,7 @@ app.set("port", process.env.PORT );
 app.set("views", path.join(__dirname, "./src/views"));
 app.engine(".hbs",exphbs({ defaultLayout: "main",extname: ".hbs"}) );
 app.set("view engine", ".hbs");
-app.use(cookieParser());
+//app.use(cookieParser());
 
 
 // // inicializar passport
@@ -31,15 +31,15 @@ app.use(cookieParser());
 
 // habilitar cookie parser
 // crear la session
-app.use(session({
-    //store: sessionStore,
-    secret: 'palabrasecreta',
-    key: 'supersecreta',
-    resave : false,
-    saveUninitialized : false,
-    //cookie: { maxAge: 60000 },
+// app.use(session({
+//     //store: sessionStore,
+//     secret: 'palabrasecreta',
+//     key: 'supersecreta',
+//     resave : false,
+//     saveUninitialized : false,
+//     //cookie: { maxAge: 60000 },
 
-}));
+// }));
 
 // middlewares
 app.use(morgan("dev"));
@@ -54,10 +54,10 @@ app.use(routes);
 app.use(express.static(path.join(__dirname, "public")));
 process.env.TZ = "America/La_Paz";
 
-//Enable CORS
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// //Enable CORS
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 module.exports = app;
