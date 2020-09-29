@@ -10,7 +10,7 @@ exports.direccion=()=>{
 }
 
 const compile = async function(templateName, data) {
-   const filePath = path.join(__dirname, "../views/", `${templateName}.hbs`);
+   const filePath = path.join(__dirname, "../Views/", `${templateName}.hbs`);
    const html = await fs.readFile(filePath, 'utf-8');
    return hbs.compile(html)(data);
 
@@ -85,7 +85,7 @@ exports.generatePdf = async ( template, objeto,titular )=>{
            }
        });
        // const filePath = path.join(__dirname, "../../", 'mypdf.pdf');
-       const filePath = `https://3d05e5d03da7.ngrok.io/${titular}-${template}.pdf`;
+       const filePath = `${process.env.URL_SERVER}/${titular}-${template}.pdf`;
        // console.log(window.location.origin);
        console.log('done');
        await browser.close();
