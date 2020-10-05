@@ -1,0 +1,76 @@
+{{#> principal}}
+    {{#*inline "content"}}
+
+        <section class="content-header">
+            <h1>
+                Gestion de estante
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+                <li><a href="/almacenes">Almacen</a></li>
+                <li class="active">Editar</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" >
+            <div class="row" >
+                <div class="col-lg-10">
+                    <div class="box box-primary" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Editar almacen</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <form role="form" method="post" href="/almacenes/edit/{{almacen.alm_id}}">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label >Nombre</label>
+                                            <input type="text" name="alm_nomb" value="{{almacen.alm_nomb}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre del almacen">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="ubicacionInput">Ubicacion</label>
+                                            <input type="text" name="alm_ubic" value="{{almacen.alm_ubic}}" class="form-control" style="color: #0a0a0a" id="ubicacionInput" placeholder="Escriba alguna ubicacion">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="descripcionInput">Descripcion</label>
+                                            <input type="text" name="alm_desc" value="{{almacen.alm_desc}}" class="form-control" style="color: #0a0a0a" id="ubicacionInput" placeholder="Escriba alguna descripcion">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+    {{/inline}}
+
+    {{#*inline "script"}}
+
+    {{/inline}}
+{{/principal}}

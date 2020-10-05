@@ -3,3 +3,5 @@
 .env
 prueba.js
 node_modules/*
+.idea/*
+.jshintrc

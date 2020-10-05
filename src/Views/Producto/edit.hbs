@@ -1,0 +1,126 @@
+{{#> principal}}
+    {{#*inline "content"}}
+
+        <section class="content-header">
+            <h1>
+                Gestion de productos
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+                <li><a href="/productos">Producto</a></li>
+                <li class="active">Editar</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" >
+            <div class="row" >
+                <div class="col-lg-10">
+                    <div class="box box-primary" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Editar producto</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <form role="form" method="post" href="/productos/edit/{{producto.pro_id}}">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label >Nombre</label>
+                                            <input type="text" name="pro_nomb" value="{{producto.pro_nomb}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre del producto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="descripcionInput">Descripcion</label>
+                                            <input type="text" name="pro_desc" value="{{producto.pro_desc}}" class="form-control" style="color: #0a0a0a" id="descripcionInput" placeholder="Escriba alguna descripcion">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="precioInput">Precio</label>
+                                            <input type="number" name="pro_prec" step="0.1" value="{{producto.pro_prec}}" min="0.0" class="form-control" style="color: #0a0a0a" id="precioInput" >
+                                        </div>
+                                    </div>
+                                    <p class="help-block">* Para definir los centavos debe especificarse con "," (coma).</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Marca</label>
+                                            <select name="mrc_id" class="form-control" >
+                                                <option value="">Seleccione una marca</option>
+                                                {{#each marcas}}
+                                                    {{#if (esIgual mrc_id ../producto.pro_mrc_id)}}
+                                                        <option value="{{mrc_id}}" selected>{{mrc_nomb}}</option>
+                                                    {{else}}
+                                                        <option value="{{mrc_id}}">{{mrc_nomb}}</option>
+                                                    {{/if}}
+
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Categoria</label>
+                                            <select name="cat_id" class="form-control">
+                                                <option value="">Seleccione una categoria</option>
+                                                {{#each categorias}}
+
+                                                    {{#if (esIgual cat_id ../producto.pro_cat_id)}}
+                                                        <option value="{{cat_id}}" selected>{{cat_nombre}}</option>
+                                                    {{else}}
+                                                        <option value="{{cat_id}}" >{{cat_nombre}}</option>
+                                                    {{/if}}
+
+                                                {{/each}}
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleInputFile">File input</label>
+                                            <input type="file" id="exampleInputFile">
+                                        </div>
+                                    </div>
+
+
+                                    <p class="help-block">Example block-level help text here.</p>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+    {{/inline}}
+
+    {{#*inline "script"}}
+
+    {{/inline}}
+{{/principal}}

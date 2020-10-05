@@ -1,0 +1,114 @@
+{{#> principal}}
+    {{#*inline "content"}}
+
+        <section class="content-header">
+            <h1>
+                Gestion de proveedor
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+                <li><a href="/proveedores">Proveedor</a></li>
+                <li class="active">Editar</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" >
+            <div class="row" >
+                <div class="col-lg-10">
+                    <div class="box box-primary" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Editar proveedor</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <form role="form" method="post" href="/proveedores/edit/{{proveedor.prv_id}}">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label >Nombre</label>
+                                            <input type="text" name="prv_nomb" value="{{proveedor.prv_nomb}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre del proveedor">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="ubicacionInput">Ubicacion</label>
+                                            <input type="text" name="prv_ubic" value="{{proveedor.prv_ubic}}" class="form-control" style="color: #0a0a0a" id="ubicacionInput" placeholder="Escriba alguna ubicacion">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label> Estado del proveedor</label>
+                                    <div class="radio">
+                                        {{#if proveedor.prv_esta}}
+                                            <label>
+                                                <input type="radio" name="prv_esta" id="optionsRadios1" value="1" checked>
+                                                Habilitar
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="prv_esta" id="optionsRadios2" value="0">
+                                                Deshabilitar
+                                            </label>
+                                        {{else}}
+                                            <label>
+                                                <input type="radio" name="prv_esta" id="optionsRadios1" value="1" >
+                                                Habilitar
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="prv_esta" id="optionsRadios2" value="0" checked>
+                                                Deshabilitar
+                                            </label>
+                                        {{/if}}
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="telefonoInput">Telefono</label>
+                                            <input type="text" name="prv_fono" value="{{proveedor.prv_fono}}" class="form-control" style="color: #0a0a0a" id="telefonoInput" placeholder="Escriba algun telefono">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputFile">File input</label>
+                                        <input type="file" id="exampleInputFile">
+                                    </div>
+                                </div>
+
+
+                                <p class="help-block">Example block-level help text here.</p>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+    {{/inline}}
+
+    {{#*inline "script"}}
+
+    {{/inline}}
+{{/principal}}

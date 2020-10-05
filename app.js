@@ -7,6 +7,7 @@ const session= require('express-session');
 const cookieParser= require('cookie-parser');
 const passport = require('./src/config/passport.js');
 const routes = require("./src/routes/routes.js");
+const flash = require("connect-flash");
 require('dotenv').config();
 //crear el servidor
 const app = express();
@@ -20,8 +21,23 @@ app.set("port", process.env.PORT );
 
 // Ubicaciones - Vistas
 app.set("views", path.join(__dirname, "./src/Views"));
-app.engine(".hbs",exphbs({ defaultLayout: "main",extname: ".hbs"}) );
+//Definienfo helper de handlebars
+var handlebars = require("handlebars");
+handlebars.registerHelper("setVar", function(varName, varValue, options) {
+    options.data.root[varName] = varValue;
+});
+handlebars.registerHelper("esIgual", function(var1, var2, options) {
+    return var1 === var2;
+});
+
+app.engine(".hbs",exphbs({
+    defaultLayout: "main",
+    layoutsDir: path.join(app.get("views"), "layouts"),
+    partialsDir: path.join(app.get("views"), "partials"),
+    extname: ".hbs"}) );
 app.set("view engine", ".hbs");
+
+
 //app.use(cookieParser());
 
 
@@ -48,8 +64,17 @@ app.use(
         extended: false,
     })
 );
+app.use(flash());
+
 //routes(rutas) de la app
 app.use(routes);
+app.use('/marcas',require('./src/routes/marcaRoutes'));
+app.use('/categorias',require('./src/routes/categoriaRoutes'));
+app.use('/productos',require('./src/routes/productoRoutes'));
+app.use('/almacenes',require('./src/routes/almacenRoutes'));
+app.use('/proveedores',require('./src/routes/proveedorRoutes'));
+app.use('/estantes',require('./src/routes/estanteRoutes'));
+
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 process.env.TZ = "America/La_Paz";

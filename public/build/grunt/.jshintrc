@@ -3,5 +3,9 @@
   "asi"     : false,
   "browser" : false,
   "es3"     : false,
-  "node"    : true
+  "node"    : true,
+  "es5": false,
+  "esversion": 6,
+  "unused": false
+
 }
