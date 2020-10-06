@@ -39,7 +39,7 @@ controlador.create = (req, res) => {
 };
 
 controlador.store = async (req, res) => {
-    const {mrc_nomb, mrc_desc} = req.body;
+    const {mrc_nomb, mrc_desc, mrc_furl} = req.body;
     console.log(req.body);
     return res.redirect('/marcas');
     /*try {

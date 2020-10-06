@@ -61,7 +61,7 @@ app.set("view engine", ".hbs");
 app.use(morgan("dev"));
 app.use(
     express.urlencoded({
-        extended: false,
+        extended: true,
     })
 );
 app.use(flash());
