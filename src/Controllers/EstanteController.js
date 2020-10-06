@@ -1,5 +1,5 @@
 "use strict";
-const Estante = require('../Models/estanteModel');
+const Estante = require('../Models/estanteModel.js');
 
 const controlador = {};
 

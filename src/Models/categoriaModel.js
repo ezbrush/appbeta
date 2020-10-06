@@ -9,8 +9,11 @@ const Categoria = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    cat_idpa:{
+      type: Sequelize.INTEGER,
+    },
     cat_nombre: {
-      type: Sequelize.STRING(30),
+      type: Sequelize.STRING,
     },
     cat_desc: {
       type: Sequelize.STRING,

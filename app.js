@@ -38,24 +38,24 @@ app.engine(".hbs",exphbs({
 app.set("view engine", ".hbs");
 
 
-//app.use(cookieParser());
+app.use(cookieParser());
 
 
 // // inicializar passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // habilitar cookie parser
 // crear la session
-// app.use(session({
-//     //store: sessionStore,
-//     secret: 'palabrasecreta',
-//     key: 'supersecreta',
-//     resave : false,
-//     saveUninitialized : false,
-//     //cookie: { maxAge: 60000 },
+app.use(session({
+    //store: sessionStore,
+    secret: 'palabrasecreta',
+    key: 'supersecreta',
+    resave : false,
+    saveUninitialized : false,
+    cookie: { maxAge: 60000 },
 
-// }));
+}));
 
 // middlewares
 app.use(morgan("dev"));
@@ -68,21 +68,21 @@ app.use(flash());
 
 //routes(rutas) de la app
 app.use(routes);
-app.use('/marcas',require('./src/routes/marcaRoutes'));
-app.use('/categorias',require('./src/routes/categoriaRoutes'));
-app.use('/productos',require('./src/routes/productoRoutes'));
-app.use('/almacenes',require('./src/routes/almacenRoutes'));
-app.use('/proveedores',require('./src/routes/proveedorRoutes'));
-app.use('/estantes',require('./src/routes/estanteRoutes'));
+app.use('/marcas',require('./src/routes/marcaRoutes.js'));
+app.use('/categorias',require('./src/routes/categoriaRoutes.js'));
+app.use('/productos',require('./src/routes/productoRoutes.js'));
+app.use('/almacenes',require('./src/routes/almacenRoutes.js'));
+app.use('/proveedores',require('./src/routes/proveedorRoutes.js'));
+app.use('/estantes',require('./src/routes/estanteRoutes.js'));
 
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 process.env.TZ = "America/La_Paz";
 
-// //Enable CORS
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+//Enable CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 module.exports = app;

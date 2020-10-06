@@ -12,14 +12,17 @@ const Estante = db.define(
     },
      
     stn_nomb: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING,
     },
     stn_tipo: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING,
       },
     stn_mdlo: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING,
     },
+    stn_alid:{
+      type: Sequelize.INTEGER,
+    }
     
   },
   {
@@ -27,5 +30,5 @@ const Estante = db.define(
   }
 
 );
-Estante.hasOne(Almacen, { foreignKey: "stn_alid" });
+Estante.hasOne(Almacen, { foreignKey: "alm_id" });
 module.exports = Estante;

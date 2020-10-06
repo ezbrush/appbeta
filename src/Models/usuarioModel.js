@@ -2,7 +2,7 @@
 const Sequelize = require("sequelize");
 const db = require("../utils/database.js");
 const bcrypt = require('bcrypt-nodejs');
-const Rol = require('./rolModel.js');
+
 const Usuario = db.define(
   "usuario",
   {
@@ -11,6 +11,7 @@ const Usuario = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    
     usu_mail: {
         type: Sequelize.STRING,
         allowNull:false,
@@ -32,9 +33,10 @@ const Usuario = db.define(
             
         },
     },
-    usu_nombre: {
+    usu_nomb: {
       type: Sequelize.STRING(50),
     },
+    
     usu_apel: {
       type: Sequelize.STRING(50),
     },
@@ -53,23 +55,21 @@ const Usuario = db.define(
   },
   {
     freezeTableName: true,
-  },{
-    
     hooks: {
-    beforeCreate(usuario) { 
-        usuario.usu_pswd = Usuario.prototype.hashPassword(usu.password);
-        }
-    }
-
-}
+      beforeCreate(usuario) { 
+          usuario.usu_pswd = Usuario.prototype.hashPassword(usuario.usu_pswd);
+          }
+      }
+  },
 
 );
 // Método para comparar los password
 Usuario.prototype.validarPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+    return bcrypt.compareSync(password, this.usu_pswd);
 };
 Usuario.prototype.hashPassword = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null );
 };
-Usuario.hasOne(Rol, { foreignKey: "usu_rol" });
+
+
 module.exports = Usuario;

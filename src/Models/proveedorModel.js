@@ -10,7 +10,7 @@ const Proveedor = db.define(
       autoIncrement: true,
     },
     prv_nomb: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING,
     },
     prv_ubic: {
       type: Sequelize.STRING,
@@ -19,7 +19,7 @@ const Proveedor = db.define(
         type: Sequelize.INTEGER,
     },
     prv_fono: {
-      type: Sequelize.STRING(30),
+      type: Sequelize.STRING,
     },
     prv_furl: {
       type: Sequelize.STRING,

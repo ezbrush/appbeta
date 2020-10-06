@@ -50,15 +50,15 @@
                                 </thead>
                                 <tbody>
 
-                                {{#each categorias}}
+                                {{#each categorias as |item|}}
                                     <tr>
-                                        <td>{{cat_id}}</td>
-                                        <td>{{cat_nombre}}</td>
-                                        <td>{{cat_desc}}</td>
+                                        <td>{{item.dataValues.cat_id}}</td>
+                                        <td>{{item.dataValues.cat_nombre}}</td>
+                                        <td>{{item.dataValues.cat_desc}}</td>
 
                                         <td>
-                                            <a class="btn btn-w-m btn-info" href="/categorias/edit/{{cat_id}}"><i class="fa fa-edit"></i> Editar</a>
-                                            <a class="btn btn-w-m btn-danger" href="/categorias/delete/{{cat_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
+                                            <a class="btn btn-w-m btn-info" href="/categorias/edit/{{item.dataValues.cat_id}}"><i class="fa fa-edit"></i> Editar</a>
+                                            <a class="btn btn-w-m btn-danger" href="/categorias/delete/{{item.dataValues.cat_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
                                         </td>
                                     </tr>
                                 {{/each}}

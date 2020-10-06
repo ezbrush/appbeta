@@ -10,8 +10,11 @@ const BoletaMovimiento = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    bmo_usu:{
+      type: Sequelize.INTEGER
+    },
     bmo_hora: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING,
     },
     bmo_fecha: {
         type: Sequelize.STRING,
@@ -28,5 +31,5 @@ const BoletaMovimiento = db.define(
     freezeTableName: true,
   }
 );
-BoletaMovimiento.belongsTo(Usuario, { foreignKey: "bmo_usu" });
+BoletaMovimiento.belongsTo(Usuario, { foreignKey: "usu_id" });
 module.exports = BoletaMovimiento;

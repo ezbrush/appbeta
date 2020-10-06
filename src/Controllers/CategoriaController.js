@@ -1,16 +1,20 @@
 "use strict";
-const Marca = require('../Models/categoriaModel');
+
+const Categoria = require('../Models/categoriaModel.js');
+
 
 
 const controlador = {};
 
-controlador.index = (req, res) => {
-    var variable = [
-        {cat_id: 0, cat_nombre: "Herramientas de mano", cat_desc: "Herramientas de uso manual"},
-        {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"}
-    ];
+controlador.index = async (req, res) => {
+    const items = await Catagoria.findAll();
+    // var variable = [
+    //     {cat_id: 0, cat_nombre: "Herramientas de mano", cat_desc: "Herramientas de uso manual"},
+    //     {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"}
+    // ];
     //res.json(text);
-    res.render("Categoria/index", {categorias: variable});
+    //res.render("Categoria/index", {categorias: variable});
+    res.render("Categoria/index", {categorias: items});
 
 };
 
@@ -31,22 +35,42 @@ controlador.store = async (req, res) => {
 
 };
 
-controlador.edit = (req, res) => {
+controlador.edit = async (req, res) => {
     const {cat_id} = req.params;
-    var categoria = {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"};
-    return res.render("Categoria/edit", {categoria: categoria});
+    const item =  await Catagoria.findOne({where: {
+        cat_id:cat_id
+    }});
+
+    // var categoria = {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"};
+    // return res.render("Categoria/edit", {categoria: categoria});
+    //var categoria = {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"};
+    return res.render("Categoria/edit", {categoria: item.dataValues});
 };
 
 
 controlador.update = async (req, res) => {
     const {cat_id} = req.params;
+    const item = await Categoria.findOne({
+        where:{
+            cat_id:cat_id
+        }
+    });
     const {cat_nombre, cat_desc} = req.body;
+    item.cat_nombre=cat_nombre;
+    item.cat_desc=cat_desc;
+    await item.save();
     return res.redirect('/categorias');
 
 };
 
 controlador.destroy = async (req, res) => {
     const {cat_id} = req.params;
+    const item = await Categoria.findOne({
+        where:{
+            cat_id:cat_id
+        }
+    });
+    await item.destroy();
     res.redirect('/categorias');
 
 };

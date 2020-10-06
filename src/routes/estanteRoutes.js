@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 //Controladores
-const controller = require("../Controllers/EstanteController");
+const controller = require("../Controllers/EstanteController.js");
 
 //Estante
 router.get("/", controller.index);

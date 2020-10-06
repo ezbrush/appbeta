@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 //Controladores
-const controller = require("../Controllers/AlmacenController");
+const controller = require("../Controllers/AlmacenController.js");
 
 //Almacen
 router.get("/", controller.index);

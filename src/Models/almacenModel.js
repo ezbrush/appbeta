@@ -10,7 +10,7 @@ const Almacen = db.define(
       autoIncrement: true,
     },
     alm_nomb: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING,
     },
     alm_ubic: {
         type: Sequelize.STRING,

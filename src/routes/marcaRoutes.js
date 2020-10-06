@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 //Controladores
-const marcaController = require("../Controllers/MarcaController");
+const marcaController = require("../Controllers/MarcaController.js");
 
 //Marca
 router.get("/", marcaController.index);
