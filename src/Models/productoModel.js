@@ -11,8 +11,14 @@ const Producto = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    pro_marc:{
+      type: Sequelize.INTEGER,
+    },
+    pro_cate:{
+      type: Sequelize.INTEGER
+    },
     pro_nomb: {
-      type: Sequelize.STRING(30),
+      type: Sequelize.STRING,
     },
     pro_desc: {
       type: Sequelize.STRING,
@@ -22,13 +28,13 @@ const Producto = db.define(
     },
     pro_furl: {
       type: Sequelize.STRING,
-    },
+    }
   },
   {
     freezeTableName: true,
   }
 );
-Producto.hasOne(Marca,{foreignKey:'pro_marc'});
-Producto.hasOne(Categoria,{foreignKey:'pro_cate'});
+Producto.hasOne(Marca,{foreignKey:'mrc_id'});
+Producto.hasOne(Categoria,{foreignKey:'cat_id'});
 
-module.exports = Categoria;
+module.exports = Producto;

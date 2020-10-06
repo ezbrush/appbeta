@@ -5,26 +5,28 @@ const Proveedor = require("./proveedorModel.js");
 const Mercaderia = db.define(
   "mercaderia",
   {
-    mrc_id: {
+    mer_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    mrc_fech: {
+    mer_fech: {
       type: Sequelize.DATE,
     },
-    mrc_desc: {
+    mer_desc: {
       type: Sequelize.STRING,
     },
-    mrc_total: {
+    mer_total: {
         type: Sequelize.DECIMAL,
       },
-      
+      mer_prov:{
+        type: Sequelize.INTEGER,
+      }
     
   },
   {
     freezeTableName: true,
   }
 );
-Mercaderia.belongsTo(Proveedor, {foreignKey: 'mrc_prov'});
+Mercaderia.belongsTo(Proveedor, {foreignKey: 'prv_id'});
 module.exports = Mercaderia;

@@ -1,20 +1,23 @@
 'use strict';
 const Sequelize = require("sequelize");
 const db = require("../utils/database.js");
-const Rol = db.define(
-  "rol",
+const Inventario = db.define(
+  "inventario",
   {
-    rol_id: {
+    inv_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    rol_nombre: {
-      type: Sequelize.STRING(20),
+    inv_fecha: {
+      type: Sequelize.DATE,
     },
-    rol_nsor: {
-      type: Sequelize.STRING(10),
+    inv_desc: {
+      type: Sequelize.STRING,
     },
+    inv_total:{
+        type: Sequelize.DECIMAL,
+    }
     
   },
   {
@@ -22,4 +25,4 @@ const Rol = db.define(
   }
 );
 
-module.exports = Rol;
+module.exports = Inventario;

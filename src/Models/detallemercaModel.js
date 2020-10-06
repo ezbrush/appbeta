@@ -6,20 +6,23 @@ const Producto= require("./productoModel.js");
 const DetalleMercaderia = db.define(
   "detallemerca",
   {
-    dtm_id: {
+    dtm_cant:{
+        type: Sequelize.DECIMAL,
+    },
+    dtm_merc:{
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
     },
-    dtm_cant:{
-        type: Sequelize.DECIMAL
-    },
+    dtm_pro:{
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      },
   },
   {
     freezeTableName: true,
   }
 );
-DetalleMercaderia.belongsTo(Mercaderia, {foreignKey: 'dtm_merc'});
-DetalleMercaderia.belongsTo(Producto,{foreignKey: "dtm_pro"});
+DetalleMercaderia.belongsTo(Mercaderia, {foreignKey: 'mrc_id'});
+DetalleMercaderia.belongsTo(Producto,{foreignKey: "pro_id"});
 
 module.exports = DetalleMercaderia;

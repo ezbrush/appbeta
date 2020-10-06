@@ -1,5 +1,5 @@
 "use strict";
-const Proveedor = require('../Models/proveedorModel');
+const Proveedor = require('../Models/proveedorModel.js');
 
 const controlador = {};
 

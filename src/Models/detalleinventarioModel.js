@@ -1,20 +1,20 @@
 'use strict';
 const Sequelize = require("sequelize");
 const db = require("../utils/database.js");
-const Boleta = require("./boletamovimientoModel.js");
+const Inventario = require("./inventarioModel.js");
 const Producto= require("./productoModel.js");
-const DetalleBoletaMovimiento = db.define(
-  "detalleboleta",
+const DetalleInventario = db.define(
+  "detalleinventario",
   {
 
-    dtb_cant:{
+    din_cant:{
         type:Sequelize.DECIMAL
     },
-    dtb_bol:{
+    din_inv:{
       type: Sequelize.INTEGER,
       primaryKey: true,
     },
-    dtb_pro:{
+    din_pro:{
       type: Sequelize.INTEGER,
       primaryKey: true,
     }
@@ -24,7 +24,7 @@ const DetalleBoletaMovimiento = db.define(
     freezeTableName: true,
   }
 );
-DetalleBoletaMovimiento.belongsTo(Boleta, {foreignKey: 'bmo_id'});
-DetalleBoletaMovimiento.belongsTo(Producto,{foreignKey: "pro_id"});
+DetalleInventario.belongsTo(Inventario, {foreignKey: 'din_inv'});
+DetalleInventario.belongsTo(Producto,{foreignKey: "din_pro"});
 
-module.exports = DetalleBoletaMovimiento;
+module.exports = DetalleInventario;

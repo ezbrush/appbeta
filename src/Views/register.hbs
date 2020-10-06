@@ -1,0 +1,83 @@
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="#">Registro de<b>  Administrativo </b></a>
+  </div>
+  
+  <div class="register-box-body">
+    {{#if sessionFlash.message}}
+    <div class="{{ sessionFlash.type }}" style="color: white; text-align: center;">
+         {{ sessionFlash.message }}
+    </div>
+    {{/if}}
+
+
+    <p class="login-box-msg">Registrar un nuevo Operador</p>
+
+    <form action="/register" method="post">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Apellido" name="usu_apel">
+        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Nombre" name="usu_nomb">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Carnet identidad" name="usu_ci">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Telefono" name="usu_fono">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Direccion Domicilio" name="usu_domi">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email"  name="usu_mail">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" name="usu_pswd">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      
+      <div class="form-group has-feedback">
+        
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+        
+      
+      
+      
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- Si tienes una cuenta -</p>
+    
+      <a href="/" class="btn btn-block  btn-google btn-flat">Iniciar Sesion</a>
+    </div>
+
+  </div>
+  <!-- /.form-box -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>

@@ -10,12 +10,12 @@ const Marca = db.define(
       autoIncrement: true,
     },
     mrc_nomb: {
-      type: Sequelize.STRING(80),
+      type: Sequelize.STRING,
     },
     mrc_desc: {
       type: Sequelize.STRING,
     },
-    cat_furl: {
+    mrc_furl: {
       type: Sequelize.STRING,
     },
   },

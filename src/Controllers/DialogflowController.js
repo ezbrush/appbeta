@@ -7,6 +7,11 @@ const fs = require('fs');
 const util = require('util');
 const https = require('https');
 const path = require('path');
+const Producto = require("../Models/productoModel.js");
+const Marca = require("../Models/marcaModel.js");
+const Inventario=require("../Models/inventarioModel.js");
+const DetalleInventario = require("../Models/detalleinventarioModel.js");
+const Categoria = require("../Models/categoriaModel");
 const sessionIds = new Map();
 var sender,text,tipo,url,titular;
 function setSessionAndUser(senderID) {
@@ -56,9 +61,9 @@ module.exports.transcriReceta=async(req,res,next)=>{
 
 module.exports.DetectIntent=async(req,res,next)=>{
     try {
-        sender = req.body.From; // CELULAR
+        sender = req.body.From; // Celular
         text = req.body.mensaje;
-        titular=sender; //sender.substr(9);
+        titular=sender; 
         setSessionAndUser(sender);
         const response = await Dialogbot.sendTextQuery(
             sessionIds,
@@ -93,6 +98,132 @@ exports.index=async (req,res,next) => {
 exports.home= async (req,res,next)=>{
     try {
         res.render('home');
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+
+
+
+module.exports.getProductByNameAPI=async(req,res,next)=>{
+    try {
+        var producto = req.query.producto;
+        const obj = await Producto.findOne({where:{
+            pro_nomb: producto
+        }});
+        return res.json({
+            ok:true,
+            data: obj
+        });
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+
+};
+
+module.exports.getMarcaByNameAPI=async(req,res,next)=>{
+    try {
+        var marca = req.query.marca;
+        const obj = await Marca.findOne({where:{
+            mrc_nomb: marca
+            }});
+        return res.json({
+            ok:true,
+            data: obj
+        });
+
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+
+module.exports.terminarInventarioAPI=async(req,res,next)=>{
+    try {
+        var total=0;
+        const fecha = utils.fecha(); 
+        const obj= await Inventario.create({
+            inv_fecha:fecha,
+            inv_desc: req.body.descripcion,
+            inv_total  :0
+
+        });        
+        const datas = req.body.datas;
+        for (const key in datas) {
+            if (datas.hasOwnProperty(key)) {
+                const element = datas[key];
+                const cantidad = parseFloat(element.din_cant);
+                total += cantidad;
+                const objtemp= {
+                    din_cant : cantidad,
+                    din_inv  : obj.inv_id,
+                    din_pro  : element.din_pro
+                }
+                await DetalleInventario.create(objtemp);
+            }
+        }
+        obj.inv_total = total;
+        await obj.save();
+        return res.json({
+            ok:true,
+            data: obj.inv_id
+        });        
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+module.exports.catalogoPadre= async(req,res,next)=>{
+    try {
+      const  obj = await Categoria.findAll({
+          where:{
+            cat_idpa:null
+          }
+      });
+      res.json({
+          ok:true,
+          datas:obj
+      })
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+module.exports.catalogoNivel= async(req,res,next)=>{
+    try {
+        const idpadre= parseInt(req.query.idpadre);
+      const  obj = await Categoria.findAll({
+          where:{
+            cat_idpa:idpadre
+          }
+      });
+      res.json({
+          ok:true,
+          datas:obj
+      })
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+module.exports.productoPorCategoria=async (req,res,next)=>{
+    try {
+      const idcat= parseInt(req.query.idcat);
+      const  obj = await Producto.findAll({
+          where:{
+            pro_cate:idcat
+          }
+      });
+      res.json({
+          ok:true,
+          datas:obj
+      })
     } catch (error) {
         console.log(error);
         next();

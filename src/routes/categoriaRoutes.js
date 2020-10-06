@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 //Controladores
-const categoriaController = require("../Controllers/CategoriaController");
+const categoriaController = require("../Controllers/CategoriaController.js");
 
 //Categoria
 router.get("/", categoriaController.index);

@@ -15,9 +15,14 @@
 
         <!-- Main content -->
         <section class="content">
-
+            {{#if sessionFlash.message}}
+                <div class="{{ sessionFlash.type }}" style="color: white; text-align: center;">
+             {{ sessionFlash.message }}
+                </div>
+            {{/if}} 
             <!-- Default box -->
             <div class="box">
+                
                 <div class="box-header with-border">
                     <h3 class="box-title">Titulo</h3>
                     <div class="box-tools pull-right">

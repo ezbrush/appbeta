@@ -1,5 +1,5 @@
 "use strict";
-const Producto = require('../Models/productoModel');
+const Producto = require('../Models/productoModel.js');
 
 
 const controlador = {};
@@ -67,6 +67,7 @@ controlador.destroy = async (req, res) => {
     res.redirect('/productos');
 
 };
+
 
 
 module.exports = controlador;

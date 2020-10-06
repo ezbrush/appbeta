@@ -50,15 +50,15 @@
                                 </thead>
                                 <tbody>
 
-                                {{#each almacenes}}
+                                {{#each almacenes as |item|}}
                                     <tr>
-                                        <td>{{alm_id}}</td>
-                                        <td>{{alm_nomb}}</td>
-                                        <td>{{alm_ubic}}</td>
-                                        <td>{{alm_desc}}</td>
+                                        <td>{{item.dataValues.alm_id}}</td>
+                                        <td>{{item.dataValues.alm_nomb}}</td>
+                                        <td>{{item.dataValues.alm_ubic}}</td>
+                                        <td>{{item.dataValues.alm_desc}}</td>
                                         <td>
-                                            <a class="btn btn-w-m btn-info" href="/almacenes/edit/{{alm_id}}"><i class="fa fa-edit"></i> Editar</a>
-                                            <a class="btn btn-w-m btn-danger" href="/almacenes/delete/{{alm_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
+                                            <a class="btn btn-w-m btn-info" href="/almacenes/edit/{{item.dataValues.alm_id}}"><i class="fa fa-edit"></i> Editar</a>
+                                            <a class="btn btn-w-m btn-danger" href="/almacenes/delete/{{item.dataValues.alm_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
                                         </td>
                                     </tr>
                                 {{/each}}

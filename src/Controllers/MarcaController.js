@@ -1,5 +1,5 @@
 "use strict";
-const Marca = require('../Models/marcaModel');
+const Marca = require('../Models/marcaModel.js');
 
 
 const controlador = {};
