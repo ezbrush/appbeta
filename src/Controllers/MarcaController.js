@@ -4,43 +4,19 @@ const Marca = require('../Models/marcaModel.js');
 
 const controlador = {};
 
-controlador.index = (req, res) => {
-    var text = [
-        {mrc_id: 0, mrc_nomb: "Tramontina", mrc_desc: "Herramientas de todo tipo"},
-        {mrc_id: 1, mrc_nomb: "Monopol", mrc_desc: "Pinturas de todo tipo"}
-    ];
-    //res.json(text);
-    res.render("Marca/index", {marcas: text});
-
-};
-
-controlador.listar = async (req, res) => {
-
-    try {
-        let listaDeMarcas = await Marca.findAll();
-        return res.json({
-            message: "Se realizo la consulta satisfactoriamente",
-            data: listaDeMarcas,
-            tipoRespuesta: 200
-        });
-    }catch (error) {
-        res.status(500).json({
-            message: "Algo salio mal",
-            data: {},
-            tipoRespuesta: 500
-        });
-    }
-
+controlador.index = async (req, res) => {
+    var marcas = await Marca.findAll();
+    console.log("index");
+    res.render("Marca/index", {marcas: marcas});
 };
 
 controlador.create = (req, res) => {
     return res.render("Marca/create");
-
 };
 
 controlador.store = async (req, res) => {
     const {mrc_nomb, mrc_desc, mrc_furl} = req.body;
-    console.log(req.body);
+
     return res.redirect('/marcas');
     /*try {
         let nuevaMarca = await  Marca.create({
@@ -64,9 +40,9 @@ controlador.store = async (req, res) => {
     }*/
 };
 
-controlador.edit = (req, res) => {
+controlador.edit = async (req, res) => {
     const {mrc_id} = req.params;
-    var marca = {mrc_id: 0, mrc_nomb: "Tramontina", mrc_desc: "Herramientas de todo tipo"};
+    const marca = await Marca.findByPk(mrc_id);//{mrc_id: 0, mrc_nomb: "Tramontina", mrc_desc: "Herramientas de todo tipo"};
     return res.render("Marca/edit", {marca: marca});
 };
 
@@ -105,24 +81,10 @@ controlador.update = async (req, res) => {
 
 controlador.destroy = async (req, res) => {
     const {mrc_id} = req.params;
+    await Marca.destroy({
+        where: { mrc_id }
+    });
     res.redirect('/marcas');
-    /*try {
-        //El metodo destroy retorna la cantidad de elementos eliminado
-        const cantidadEliminada = await Marca.destroy({
-            where: { mrc_id }
-        });
-        res.json({
-            message: "Se elimino satisfactoriamente",
-            data: cantidadEliminada,
-            tipoRespuesta: 200
-        });
-    }catch (e) {
-        res.status(500).json({
-            message: "Algo salio mal",
-            data: {},
-            tipoRespuesta: 500
-        });
-    }*/
 };
 
 

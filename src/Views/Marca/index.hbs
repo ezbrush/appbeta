@@ -44,19 +44,21 @@
                                     <th>Nro</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
+                                    <th>Imagen</th>
                                     <th>Accion</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                {{#each marcas}}
+                                {{#each marcas as |item|}}
                                     <tr>
-                                        <td>{{mrc_id}}</td>
-                                        <td>{{mrc_nomb}}</td>
-                                        <td>{{mrc_desc}}</td>
+                                        <td>{{item.dataValues.mrc_id}}</td>
+                                        <td>{{item.dataValues.mrc_nomb}}</td>
+                                        <td>{{item.dataValues.mrc_desc}}</td>
+                                        <td><img src="{{item.dataValues.mrc_furl}}" width="70" alt=""></td>
                                         <td>
-                                            <a class="btn btn-w-m btn-info" href="/marcas/edit/{{mrc_id}}"><i class="fa fa-edit"></i> Editar</a>
-                                            <a class="btn btn-w-m btn-danger" href="/marcas/delete/{{mrc_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
+                                            <a class="btn btn-w-m btn-info" href="/marcas/edit/{{item.dataValues.mrc_id}}"><i class="fa fa-edit"></i> Editar</a>
+                                            <a class="btn btn-w-m btn-danger" href="/marcas/delete/{{item.dataValues.mrc_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
                                         </td>
                                     </tr>
                                 {{/each}}
@@ -67,6 +69,7 @@
                                     <th>Nro</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
+                                    <th>Imagen</th>
                                     <th>Accion</th>
                                 </tr>
                                 </tfoot>

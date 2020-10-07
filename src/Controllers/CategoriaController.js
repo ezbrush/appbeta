@@ -8,24 +8,11 @@ const controlador = {};
 
 controlador.index = async (req, res) => {
     const items = await Categoria.findAll();
-    // var variable = [
-    //     {cat_id: 0, cat_nombre: "Herramientas de mano", cat_desc: "Herramientas de uso manual"},
-    //     {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"}
-    // ];
-    //res.json(text);
-    //res.render("Categoria/index", {categorias: variable});
     res.render("Categoria/index", {categorias: items});
-
-};
-
-controlador.listar = async (req, res) => {
-
-
 };
 
 controlador.create = (req, res) => {
     return res.render("Categoria/create");
-
 };
 
 controlador.store = async (req, res) => {

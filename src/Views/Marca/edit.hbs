@@ -24,13 +24,13 @@
                         <!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" method="post" href="/marcas/edit/{{marca.mrc_id}}">
+                        <form role="form" method="post" href="/marcas/edit/{{marca.dataValues.mrc_id}}">
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label >Nombre</label>
-                                            <input type="text" name="mrc_nomb" value="{{marca.mrc_nomb}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre de la nueva marca">
+                                            <input type="text" name="mrc_nomb" value="{{marca.dataValues.mrc_nomb}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre de la nueva marca">
                                         </div>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="descripcionInput">Descripcion</label>
-                                            <input type="text" name="mrc_desc" value="{{marca.mrc_desc}}" class="form-control" style="color: #0a0a0a" id="descripcionInput" placeholder="Escriba alguna descripcion">
+                                            <input type="text" name="mrc_desc" value="{{marca.dataValues.mrc_desc}}" class="form-control" style="color: #0a0a0a" id="descripcionInput" placeholder="Escriba alguna descripcion">
                                         </div>
                                     </div>
 

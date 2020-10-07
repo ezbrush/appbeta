@@ -24,13 +24,13 @@
                         <!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" method="post" href="/categorias/edit/{{categoria.cat_id}}">
+                        <form role="form" method="post" href="/categorias/edit/{{categoria.dataValues.cat_id}}">
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label >Nombre</label>
-                                            <input type="text" name="cat_nombre" value="{{categoria.cat_nombre}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre de la nueva categoria">
+                                            <input type="text" name="cat_nombre" value="{{categoria.dataValues.cat_nombre}}" class="form-control" style="color: #0a0a0a" id="nombreInput" placeholder="Nombre de la nueva categoria">
                                         </div>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="descripcionInput">Descripcion</label>
-                                            <input type="text" name="cat_desc" value="{{categoria.cat_desc}}" class="form-control" style="color: #0a0a0a" id="descripcionInput" placeholder="Escriba alguna descripcion">
+                                            <input type="text" name="cat_desc" value="{{categoria.dataValues.cat_desc}}" class="form-control" style="color: #0a0a0a" id="descripcionInput" placeholder="Escriba alguna descripcion">
                                         </div>
                                     </div>
 

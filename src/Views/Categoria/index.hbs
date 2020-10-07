@@ -44,7 +44,7 @@
                                     <th>Nro</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
-
+                                    <th>Imagen</th>
                                     <th>Accion</th>
                                 </tr>
                                 </thead>
@@ -55,7 +55,7 @@
                                         <td>{{item.dataValues.cat_id}}</td>
                                         <td>{{item.dataValues.cat_nombre}}</td>
                                         <td>{{item.dataValues.cat_desc}}</td>
-
+                                        <td><img src="{{item.dataValues.cat_furl}}" width="70" alt=""></td>
                                         <td>
                                             <a class="btn btn-w-m btn-info" href="/categorias/edit/{{item.dataValues.cat_id}}"><i class="fa fa-edit"></i> Editar</a>
                                             <a class="btn btn-w-m btn-danger" href="/categorias/delete/{{item.dataValues.cat_id}}"><i class="fa fa-trash-o"></i> Eliminar</a>
@@ -69,7 +69,7 @@
                                     <th>Nro</th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
-
+                                    <th>Imagen</th>
                                     <th>Accion</th>
                                 </tr>
                                 </tfoot>
