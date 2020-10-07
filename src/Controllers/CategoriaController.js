@@ -7,7 +7,7 @@ const Categoria = require('../Models/categoriaModel.js');
 const controlador = {};
 
 controlador.index = async (req, res) => {
-    const items = await Catagoria.findAll();
+    const items = await Categoria.findAll();
     // var variable = [
     //     {cat_id: 0, cat_nombre: "Herramientas de mano", cat_desc: "Herramientas de uso manual"},
     //     {cat_id: 1, cat_nombre: "Llaves de tubo", cat_desc: "Llaves con forma de tubo"}
@@ -37,7 +37,7 @@ controlador.store = async (req, res) => {
 
 controlador.edit = async (req, res) => {
     const {cat_id} = req.params;
-    const item =  await Catagoria.findOne({where: {
+    const item =  await Categoria.findOne({where: {
         cat_id:cat_id
     }});
 
