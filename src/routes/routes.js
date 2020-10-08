@@ -27,6 +27,8 @@ router.post("/api/inventario", dialogflowController.terminarInventarioAPI );
 router.get("/api/catalogo", dialogflowController.catalogoPadre );
 router.get("/api/catalogonivel", dialogflowController.catalogoNivel );
 router.get("/api/productobycat", dialogflowController.productoPorCategoria );
+router.get("/api/almacenes", dialogflowController.listarAlmacenes );
+router.get("/api/estante", dialogflowController.estantes );
 
 
 

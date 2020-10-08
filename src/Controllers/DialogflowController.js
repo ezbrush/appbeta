@@ -11,7 +11,9 @@ const Producto = require("../Models/productoModel.js");
 const Marca = require("../Models/marcaModel.js");
 const Inventario=require("../Models/inventarioModel.js");
 const DetalleInventario = require("../Models/detalleinventarioModel.js");
-const Categoria = require("../Models/categoriaModel");
+const Categoria = require("../Models/categoriaModel.js");
+const Almacenes = require("../Models/almacenModel.js");
+const Estante = require("../Models/estanteModel.js");
 const sessionIds = new Map();
 var sender,text,tipo,url,titular;
 function setSessionAndUser(senderID) {
@@ -228,4 +230,36 @@ module.exports.productoPorCategoria=async (req,res,next)=>{
         console.log(error);
         next();
     }
+};
+
+module.exports.estantes = async (req,res,next)=>{
+    try {
+    const idal=parseInt(req.query.idal);
+    const items = await Estante.findAll({where:{
+        stn_alid:idal
+    }});
+    return res.json({
+        ok:true,
+        datas:items
+    });
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+};
+
+module.exports.listarAlmacenes = async (req,res,next)=>{
+    try {
+    const items = await Almacenes.findAll();
+
+    return res.json({
+        ok:true,
+        datas:items
+    });      
+
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+    
 };
